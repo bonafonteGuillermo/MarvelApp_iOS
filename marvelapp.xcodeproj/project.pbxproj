@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		99050BF82233F700004DCD4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050BF72233F700004DCD4C /* AppDelegate.swift */; };
-		99050BFA2233F700004DCD4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050BF92233F700004DCD4C /* ViewController.swift */; };
+		99050BFA2233F700004DCD4C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050BF92233F700004DCD4C /* MainViewController.swift */; };
 		99050BFD2233F700004DCD4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99050BFB2233F700004DCD4C /* Main.storyboard */; };
 		99050BFF2233F701004DCD4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99050BFE2233F701004DCD4C /* Assets.xcassets */; };
 		99050C022233F701004DCD4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99050C002233F701004DCD4C /* LaunchScreen.storyboard */; };
 		99050C0D2233F701004DCD4C /* marvelappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050C0C2233F701004DCD4C /* marvelappTests.swift */; };
 		99050C182233F701004DCD4C /* marvelappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050C172233F701004DCD4C /* marvelappUITests.swift */; };
+		99CEC98F223D6E59003B127A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEC98E223D6E59003B127A /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		99050BF42233F700004DCD4C /* marvelapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99050BF72233F700004DCD4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99050BF92233F700004DCD4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99050BF92233F700004DCD4C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		99050BFC2233F700004DCD4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99050BFE2233F701004DCD4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99050C012233F701004DCD4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		99050C132233F701004DCD4C /* marvelappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = marvelappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99050C172233F701004DCD4C /* marvelappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marvelappUITests.swift; sourceTree = "<group>"; };
 		99050C192233F701004DCD4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99CEC98E223D6E59003B127A /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				99050BF72233F700004DCD4C /* AppDelegate.swift */,
-				99050BF92233F700004DCD4C /* ViewController.swift */,
+				99050BF92233F700004DCD4C /* MainViewController.swift */,
 				99050BFB2233F700004DCD4C /* Main.storyboard */,
 				99050BFE2233F701004DCD4C /* Assets.xcassets */,
 				99050C002233F701004DCD4C /* LaunchScreen.storyboard */,
 				99050C032233F701004DCD4C /* Info.plist */,
+				99CEC98E223D6E59003B127A /* Repository.swift */,
 			);
 			path = marvelapp;
 			sourceTree = "<group>";
@@ -256,8 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99050BFA2233F700004DCD4C /* ViewController.swift in Sources */,
+				99050BFA2233F700004DCD4C /* MainViewController.swift in Sources */,
 				99050BF82233F700004DCD4C /* AppDelegate.swift in Sources */,
+				99CEC98F223D6E59003B127A /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,14 +437,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LFLEGKMH59;
+				DEVELOPMENT_TEAM = A5UCFNWB8C;
 				INFOPLIST_FILE = marvelapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = es.upsa.mimo.marvelapp;
+				PRODUCT_BUNDLE_IDENTIFIER = es.upsa.mimo.marvelmarvelapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -452,14 +456,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LFLEGKMH59;
+				DEVELOPMENT_TEAM = A5UCFNWB8C;
 				INFOPLIST_FILE = marvelapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = es.upsa.mimo.marvelapp;
+				PRODUCT_BUNDLE_IDENTIFIER = es.upsa.mimo.marvelmarvelapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
