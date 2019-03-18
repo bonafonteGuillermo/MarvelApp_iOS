@@ -14,18 +14,18 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 struct Thumbnail : Codable {
 	let path : String?
-	let extension : String?
+	let thumbnailExtension : String?
 
 	enum CodingKeys: String, CodingKey {
 
 		case path = "path"
-		case extension = "extension"
+		case thumbnailExtension = "extension"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		path = try values.decodeIfPresent(String.self, forKey: .path)
-		extension = try values.decodeIfPresent(String.self, forKey: .extension)
+		thumbnailExtension = try values.decodeIfPresent(String.self, forKey: .thumbnailExtension)
 	}
 
 }

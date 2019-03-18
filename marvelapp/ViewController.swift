@@ -9,35 +9,42 @@
 import UIKit
 import CommonCrypto
 
-class MainViewController: UIViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("T##items: Any...##Anydklgjdklgjfl")
-        /*let url = URL(string: "https://gateway.marvel.com:443/v1/public/characters?apikey=081c9bb85caaf1c502810fa48e08403c")!
-        let task = URLSession.shared.dataTask(with: url) { (data,
-            response, error) in
-            if let response = response {
-                print(response)
-            }
-            if let error = error {
-                print(error)
-            }
-            if let data = data {
-                print(data)
+        
+        
+        let apikey = "081c9bb85caaf1c502810fa48e08403c"
+        let privateKey = "052136959b724188c1892cddd1341d1c78d85704"
+        let timeStamp = "1"
+        let hash = md5(timeStamp+privateKey+apikey)
+        
+        let baseUrl = URL(string : "https://gateway.marvel.com:443/v1/public/characters?")!
+        
+        let query: [String: String] = [ "hash": hash, "apikey": apikey, "ts" : timeStamp ]
+        
+          
+        let fullUrl = baseUrl.withQueries(query)!
+        
+        print(fullUrl)
+        
+        let task = URLSession.shared.dataTask(with: fullUrl) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(Response.self, from: dataResponse)
+
+                print(model)
+
+            } catch let parsingError {
+                print("Error", parsingError)
             }
         }
-        
-        task.resume()*/
-        
-        
-        let md5String = md5("Hello, I am a hashed md5 string")
-        print(md5String)
-        
-        
-        
-        
-        
+        task.resume()
     }
     
     func md5(_ string: String) -> String {
@@ -53,7 +60,16 @@ class MainViewController: UIViewController {
         }
         return hexString
     }
-
-
 }
+
+extension URL {
+    func withQueries(_ queries: [String: String]) -> URL? {
+        var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
+        components?.queryItems = queries.map
+            { URLQueryItem(name: $0.0, value: $0.1) }
+        return components?.url
+    }
+}
+
+
 

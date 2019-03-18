@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Json4Swift_Base : Codable {
+struct Response : Codable {
 	let code : Int?
 	let status : String?
 	let copyright : String?
