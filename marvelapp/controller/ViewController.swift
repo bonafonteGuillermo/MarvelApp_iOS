@@ -8,15 +8,38 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController:
+    UIViewController,
+    UICollectionViewDataSource,
+    UICollectionViewDelegate
+{
+    
+    @IBOutlet weak var charactersCollectionView: UICollectionView!
+    
+    var characterNames : Array<String?> = ["juan", "pepe"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchCharacteres() { (results) in
-            print(results)
-        }
+        charactersCollectionView.dataSource = self
+        charactersCollectionView.delegate = self
         
+        fetchCharacteres() { (results) in
+            for result in results! {
+                print(result.name)
+                self.characterNames.append(result.name) //NOT WORKING
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+         return self.characterNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath) as! CharacterCollectionViewCell
+        cell.characterNameLabel.text = self.characterNames[indexPath.row]
+        return cell
     }
     
     func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void){

@@ -6,4 +6,9 @@
 //  Copyright © 2019 Guillermo Bonafonte Criado. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class CharacterCollectionViewCell : UICollectionViewCell{
+    
+    @IBOutlet weak var characterNameLabel: UILabel!
+}

@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class RemoteRepository : NetworkSessionProtocol {
+    
+    func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void){
+    }
+}

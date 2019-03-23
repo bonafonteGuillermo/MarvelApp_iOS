@@ -9,6 +9,6 @@
 import Foundation
 import MapKit
 
-protocol NetworkSession {
-    func fetchCharacteres(completion: @escaping ([Results]?) -> Void)
+protocol NetworkSessionProtocol {
+    func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void)
 }

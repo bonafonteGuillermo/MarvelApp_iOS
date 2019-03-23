@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+class MockRepository : NetworkSessionProtocol {
+    
+    func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void){
+        
+    }
+    
+}
