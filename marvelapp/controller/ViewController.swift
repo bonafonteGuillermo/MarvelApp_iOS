@@ -7,12 +7,19 @@
 //
 
 import UIKit
-import CommonCrypto
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchCharacteres() { (results) in
+            print(results)
+        }
+        
+    }
+    
+    func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void){
         
         let apikey = "081c9bb85caaf1c502810fa48e08403c"
         let privateKey = "052136959b724188c1892cddd1341d1c78d85704"
@@ -27,24 +34,18 @@ class ViewController: UIViewController {
             "hash": hash
         ]
         
-          
         let fullUrl = baseUrl.withQueries(query)!
-        
-        let task = URLSession.shared.dataTask(with: fullUrl) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do{
-                let decoder = JSONDecoder()
-                let model = try decoder.decode(Response.self, from: dataResponse)
-
-                print(model)
-
-            } catch let parsingError {
-                print("Error", parsingError)
+        URLSession.shared.dataTask(with: fullUrl) { (data, response, error) in
+            let decoder = JSONDecoder()
+            guard let data = data else { print("Error, no data retrieved"); return }
+            guard let charactersResponse =
+                try? decoder.decode(Response.self, from: data)
+                else{
+                    print("Error, could not parse data");
+                    completionHandler(nil);
+                    return
             }
-        }
-        task.resume()
+            completionHandler(charactersResponse.data?.results)
+            }.resume()
     }
 }
