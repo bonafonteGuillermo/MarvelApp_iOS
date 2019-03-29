@@ -16,7 +16,8 @@ class ViewController:
     
     @IBOutlet weak var charactersCollectionView: UICollectionView!
     
-    var characterNames : Array<String?> = ["juan", "pepe"]
+    //var characterNames : Array<String?> = ["juan", "pepe"]
+    var characters = [Results?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +28,22 @@ class ViewController:
         fetchCharacteres() { (results) in
             for result in results! {
                 print(result.name)
-                self.characterNames.append(result.name) //NOT WORKING
+                self.characters = results!
+                DispatchQueue.main.async {
+                    self.charactersCollectionView.reloadData()
+                }
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return self.characterNames.count
+         return self.characters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath) as! CharacterCollectionViewCell
-        cell.characterNameLabel.text = self.characterNames[indexPath.row]
+        //cell.characterNameLabel.text = self.characterNames[indexPath.row]
+        cell.characterNameLabel.text = self.characters[indexPath.row]?.name
         return cell
     }
     
