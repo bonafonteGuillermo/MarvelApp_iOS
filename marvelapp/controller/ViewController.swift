@@ -28,6 +28,7 @@ class ViewController:
         fetchCharacteres() { (results) in
             for result in results! {
                 print(result.name)
+                print(result.thumbnail?.path)
                 self.characters = results!
                 DispatchQueue.main.async {
                     self.charactersCollectionView.reloadData()
@@ -42,7 +43,13 @@ class ViewController:
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath) as! CharacterCollectionViewCell
-        //cell.characterNameLabel.text = self.characterNames[indexPath.row]
+        
+        var imageUrl : String  = (self.characters[indexPath.row]?.thumbnail?.path)!
+        var imageExtension : String  = (self.characters[indexPath.row]?.thumbnail?.thumbnailExtension)!
+        
+        let imageFullPath = imageUrl+"."+imageExtension
+        
+        cell.characterImageView.downloaded(from: imageFullPath)
         cell.characterNameLabel.text = self.characters[indexPath.row]?.name
         return cell
     }
