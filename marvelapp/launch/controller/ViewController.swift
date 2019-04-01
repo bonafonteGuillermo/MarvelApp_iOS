@@ -14,10 +14,9 @@ class ViewController:
     UICollectionViewDelegate
 {
     
-    @IBOutlet weak var charactersCollectionView: UICollectionView!
-    
-    //var characterNames : Array<String?> = ["juan", "pepe"]
     var characters = [Results?]()
+    
+    @IBOutlet weak var charactersCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +24,13 @@ class ViewController:
         charactersCollectionView.dataSource = self
         charactersCollectionView.delegate = self
         
-        fetchCharacteres() { (results) in
-            for result in results! {
-                print(result.name)
-                print(result.thumbnail?.path)
-                self.characters = results!
-                DispatchQueue.main.async {
-                    self.charactersCollectionView.reloadData()
-                }
-            }
+        getCharactersData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? DetailViewController{
+            let rowSelected = (sender as! NSIndexPath).row
+            detailViewController.character = self.characters[rowSelected]
         }
     }
     
@@ -42,8 +39,8 @@ class ViewController:
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        performSegue(withIdentifier: "segueCharacterDetails", sender: cell)
+        performSegue(withIdentifier: "segueCharacterDetails", sender: indexPath)
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,6 +54,17 @@ class ViewController:
         cell.characterImageView.downloaded(from: imageFullPath)
         cell.characterNameLabel.text = self.characters[indexPath.row]?.name
         return cell
+    }
+    
+    func getCharactersData(){
+        fetchCharacteres() { (results) in
+            for result in results! {
+                self.characters = results!
+                DispatchQueue.main.async {
+                    self.charactersCollectionView.reloadData()
+                }
+            }
+        }
     }
     
     func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void){
