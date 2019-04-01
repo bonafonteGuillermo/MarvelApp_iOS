@@ -17,6 +17,7 @@ class ViewController:
     var characters = [Results?]()
     
     @IBOutlet weak var charactersCollectionView: UICollectionView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
