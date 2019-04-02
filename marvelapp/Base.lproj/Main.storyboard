@@ -46,10 +46,15 @@
                                                     <rect key="frame" x="207" y="-17" width="168" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="UQj-iz-eX0">
+                                                    <rect key="frame" x="140" y="29" width="39" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="characterImageView" destination="IdU-kV-sPY" id="rCY-Ln-Xqr"/>
+                                            <outlet property="characterLikeImageView" destination="UQj-iz-eX0" id="riN-cs-fYc"/>
                                             <outlet property="characterNameLabel" destination="wG6-jD-dMq" id="WNj-KS-dP5"/>
                                         </connections>
                                     </collectionViewCell>
@@ -128,4 +133,7 @@
             <point key="canvasLocation" x="-1234.4000000000001" y="367.46626686656674"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="like" width="32" height="32"/>
+    </resources>
 </document>

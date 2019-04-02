@@ -23,6 +23,11 @@ class DetailViewController: UIViewController {
     }
     
     func addCharacterToFavourite(characterId : Int){
-        UserDefaults.standard.set(characterId, forKey: "favouritesCharacters")
+        var myArray = [Int]()
+        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [Int] {
+            myArray = temp
+        }
+        myArray.append(characterId)
+        UserDefaults.standard.set(myArray, forKey: "myArray")
     }
 }

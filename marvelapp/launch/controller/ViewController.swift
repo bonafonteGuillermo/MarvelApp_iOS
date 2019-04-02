@@ -18,7 +18,6 @@ class ViewController:
     
     @IBOutlet weak var charactersCollectionView: UICollectionView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +25,10 @@ class ViewController:
         charactersCollectionView.delegate = self
         
         getCharactersData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.charactersCollectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,13 +50,24 @@ class ViewController:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath) as! CharacterCollectionViewCell
         
-        var imageUrl : String  = (self.characters[indexPath.row]?.thumbnail?.path)!
-        var imageExtension : String  = (self.characters[indexPath.row]?.thumbnail?.thumbnailExtension)!
-        
+        let imageUrl : String  = (self.characters[indexPath.row]?.thumbnail?.path)!
+        let imageExtension : String  = (self.characters[indexPath.row]?.thumbnail?.thumbnailExtension)!
         let imageFullPath = imageUrl+"."+imageExtension
+        
+        var myArray = [Int]()
+        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [Int] {
+            myArray = temp
+        }
+        
+        if(myArray.contains((self.characters[indexPath.row]?.id)!)){
+            cell.characterLikeImageView.image = UIImage(named: "like")
+        }else{
+            cell.characterLikeImageView.image = nil
+        }
         
         cell.characterImageView.downloaded(from: imageFullPath)
         cell.characterNameLabel.text = self.characters[indexPath.row]?.name
+        
         return cell
     }
     
