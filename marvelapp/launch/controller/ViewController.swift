@@ -16,6 +16,7 @@ class ViewController:
 {
     
     var characters = [Results?]()
+    var repository = RemoteRepository()
     
     @IBOutlet weak var charactersCollectionView: UICollectionView!
 
@@ -39,7 +40,16 @@ class ViewController:
         }
     }
     
-    
+    func getCharactersData(){
+        self.repository.fetchCharacteres() { (results) in
+            for result in results! {
+                self.characters = results!
+                DispatchQueue.main.async {
+                    self.charactersCollectionView.reloadData()
+                }
+            }
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          return self.characters.count
@@ -48,13 +58,6 @@ class ViewController:
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "segueCharacterDetails", sender: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat =  10
-        let collectionViewSize = collectionView.frame.size.width - padding
-        
-        return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -81,44 +84,4 @@ class ViewController:
         return cell
     }
     
-    func getCharactersData(){
-        fetchCharacteres() { (results) in
-            for result in results! {
-                self.characters = results!
-                DispatchQueue.main.async {
-                    self.charactersCollectionView.reloadData()
-                }
-            }
-        }
-    }
-    
-    func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void){
-        
-        let apikey = "081c9bb85caaf1c502810fa48e08403c"
-        let privateKey = "052136959b724188c1892cddd1341d1c78d85704"
-        let timeStamp = "1"
-        let hash = (timeStamp+privateKey+apikey).md5()
-        
-        let baseUrl = URL(string : "https://gateway.marvel.com:443/v1/public/characters?")!
-        
-        let query: [String: String] = [
-            "ts" : timeStamp,
-            "apikey": apikey,
-            "hash": hash
-        ]
-        
-        let fullUrl = baseUrl.withQueries(query)!
-        URLSession.shared.dataTask(with: fullUrl) { (data, response, error) in
-            let decoder = JSONDecoder()
-            guard let data = data else { print("Error, no data retrieved"); return }
-            guard let charactersResponse =
-                try? decoder.decode(Response.self, from: data)
-                else{
-                    print("Error, could not parse data");
-                    completionHandler(nil);
-                    return
-            }
-            completionHandler(charactersResponse.data?.results)
-            }.resume()
-    }
 }
