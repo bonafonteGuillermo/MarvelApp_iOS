@@ -11,7 +11,8 @@ import UIKit
 class ViewController:
     UIViewController,
     UICollectionViewDataSource,
-    UICollectionViewDelegate
+    UICollectionViewDelegate,
+    UICollectionViewDelegateFlowLayout
 {
     
     var characters = [Results?]()
@@ -38,6 +39,8 @@ class ViewController:
         }
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          return self.characters.count
     }
@@ -45,6 +48,13 @@ class ViewController:
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "segueCharacterDetails", sender: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding: CGFloat =  10
+        let collectionViewSize = collectionView.frame.size.width - padding
+        
+        return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
