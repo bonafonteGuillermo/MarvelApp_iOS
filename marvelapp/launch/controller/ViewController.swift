@@ -16,7 +16,7 @@ class ViewController:
 {
     
     var characters = [Results?]()
-    var repository = RemoteRepository()
+    var repository = Repository()
     
     @IBOutlet weak var charactersCollectionView: UICollectionView!
 
