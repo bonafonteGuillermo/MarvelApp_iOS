@@ -115,28 +115,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Hola" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d3l-Kh-J5z">
-                                <rect key="frame" x="84" y="188" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IAX-wi-Wf7">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbd-w8-Rir">
-                                <rect key="frame" x="157" y="94" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wh-Ap-Zs8">
-                                <rect key="frame" x="157" y="94" width="30" height="30"/>
+                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hola" textAlignment="natural" id="d3l-Kh-J5z">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKJ-f1-L3H">
+                                <rect key="frame" x="0.0" y="61" width="375" height="690"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <action selector="bntAddFavourite:" destination="h7N-JZ-Jkl" eventType="touchUpInside" id="neg-L5-5OY"/>
+                                    <action selector="bntAddFavourite:" destination="h7N-JZ-Jkl" eventType="touchUpInside" id="Mt2-Sq-AX6"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="24R-TP-JHb" firstAttribute="bottom" secondItem="IAX-wi-Wf7" secondAttribute="bottom" id="C1w-sl-xGp"/>
+                            <constraint firstItem="24R-TP-JHb" firstAttribute="trailing" secondItem="IAX-wi-Wf7" secondAttribute="trailing" id="Pn1-pv-uBz"/>
+                            <constraint firstItem="IAX-wi-Wf7" firstAttribute="leading" secondItem="24R-TP-JHb" secondAttribute="leading" id="Y0z-B3-bbO"/>
+                            <constraint firstItem="IAX-wi-Wf7" firstAttribute="top" secondItem="24R-TP-JHb" secondAttribute="top" id="sGI-N6-SR1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="24R-TP-JHb"/>
                     </view>
                     <connections>
