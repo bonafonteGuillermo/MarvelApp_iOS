@@ -74,17 +74,30 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return SectionType.allCases.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeaderCell = tableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell") as! SectionHeaderCell
+        
+        var imageResourceNamed = String()
+        var labelSectionTitle = String()
+        
         switch section {
         case SectionType.TYPE_INFO.rawValue:
-            return "Info"
+            imageResourceNamed = "play"
+            labelSectionTitle = "MORE INFO"
         case SectionType.TYPE_COMIC.rawValue:
-            return "Comics"
+            imageResourceNamed = "play"
+            labelSectionTitle = "COMICS"
         case SectionType.TYPE_SERIES.rawValue:
-            return "Series"
+            imageResourceNamed = "play"
+            labelSectionTitle = "SERIES"
         default:
-            return ""
+            break
         }
+        
+        sectionHeaderCell.imageSectionHeader.image = UIImage(named: imageResourceNamed)
+        sectionHeaderCell.labelSectionHeader.text = labelSectionTitle
+        
+        return sectionHeaderCell
     }
     
     func addCharacterToFavourite(characterId : Int){
