@@ -8,10 +8,10 @@
 
 import UIKit
 
-struct Constants {
-    static let SECTION_INFO = 0
-    static let SECTION_COMIC = 1
-    static let SECTION_SERIES = 2
+enum SectionType: Int, CaseIterable {
+    case TYPE_INFO = 0
+    case TYPE_COMIC = 1
+    case TYPE_SERIES = 2
 }
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
@@ -23,6 +23,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         addCharacterToFavourite(characterId: (character?.id!)!)
     }*/
     
+    @IBOutlet weak var characterNameLabel: UILabel!
     @IBOutlet weak var detailTableView: UITableView!
     
     override func viewDidLoad() {
@@ -30,15 +31,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        
+        characterNameLabel.text = character?.name
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case Constants.SECTION_INFO:
+        case SectionType.TYPE_INFO.rawValue:
             return 1
-        case Constants.SECTION_COMIC:
+        case SectionType.TYPE_COMIC.rawValue:
             return (character?.comics?.items?.count)!
-        case Constants.SECTION_SERIES:
+        case SectionType.TYPE_SERIES.rawValue:
             return (character?.series?.items?.count)!
        default:
             return 0
@@ -47,16 +50,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case Constants.SECTION_INFO:
+        case SectionType.TYPE_INFO.rawValue:
             let sectionInfoCell = tableView.dequeueReusableCell(withIdentifier: "sectionInfoCell", for: indexPath)
             sectionInfoCell.textLabel?.text = self.character?.description
             return sectionInfoCell
-        case Constants.SECTION_COMIC:
+        case SectionType.TYPE_COMIC.rawValue:
             //"Section \(indexPath.section)
             let sectionComicCell = tableView.dequeueReusableCell(withIdentifier: "sectionInfoCell", for: indexPath)
             sectionComicCell.textLabel?.text = self.character?.comics?.items?[indexPath.row].name
             return sectionComicCell
-        case Constants.SECTION_SERIES:
+        case SectionType.TYPE_SERIES.rawValue:
             let sectionSeriesCell = tableView.dequeueReusableCell(withIdentifier: "sectionInfoCell", for: indexPath)
             sectionSeriesCell.textLabel?.text = self.character?.series?.items?[indexPath.row].name
             return sectionSeriesCell
@@ -68,16 +71,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return SectionType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case Constants.SECTION_INFO:
+        case SectionType.TYPE_INFO.rawValue:
             return "Info"
-        case Constants.SECTION_COMIC:
+        case SectionType.TYPE_COMIC.rawValue:
             return "Comics"
-        case Constants.SECTION_SERIES:
+        case SectionType.TYPE_SERIES.rawValue:
             return "Series"
         default:
             return ""
