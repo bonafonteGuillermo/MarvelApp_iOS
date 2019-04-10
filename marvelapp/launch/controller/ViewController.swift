@@ -69,12 +69,22 @@ class ViewController:
         let imageExtension : String  = (self.characters[indexPath.row]?.thumbnail?.thumbnailExtension)!
         let imageFullPath = imageUrl+"."+imageExtension
         
-        var myArray = [Int]()
-        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [Int] {
+        var myArray = [String]()
+        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [String] {
             myArray = temp
         }
         
-        if(myArray.contains((self.characters[indexPath.row]?.id)!)){
+        var charactersArray = [Results]()
+        for stringCharacter in myArray{
+            let jsonData = stringCharacter.data(using: String.Encoding.utf8)!
+            let decoder = JSONDecoder()
+            guard let character =
+                try? decoder.decode(Results.self, from: jsonData)
+                else { break }
+            charactersArray.append(character)
+        }
+        
+        if charactersArray.contains(where: { $0.id == (self.characters[indexPath.row]?.id)! }) {
             cell.characterLikeImageView.image = UIImage(named: "like")
         }else{
             cell.characterLikeImageView.image = nil

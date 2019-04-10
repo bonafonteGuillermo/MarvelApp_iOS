@@ -31,8 +31,8 @@ class Repository {
             guard let charactersResponse =
                 try? decoder.decode(Response.self, from: data)
                 else{
-                    print("Error, could not parse data");
-                    completionHandler(nil);
+                    print("Error, could not parse data")
+                    completionHandler(nil)
                     return
             }
             completionHandler(charactersResponse.data?.results)

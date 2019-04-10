@@ -111,11 +111,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func addCharacterToFavourite(characterId : Int){
-        var myArray = [Int]()
-        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [Int] {
+        
+        let encoder = JSONEncoder()
+        guard let jsonData = try? encoder.encode(character) else{ return }
+        let json = String(data: jsonData, encoding: String.Encoding.utf8)
+        
+        var myArray = [String]()
+        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [String] {
             myArray = temp
         }
-        myArray.append(characterId)
+        myArray.append(json!)
         UserDefaults.standard.set(myArray, forKey: "myArray")
     }
 }
