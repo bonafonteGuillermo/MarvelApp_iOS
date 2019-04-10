@@ -29,10 +29,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         detailTableView.delegate = self
         detailTableView.dataSource = self
         
-        characterNameLabel.text = character?.name
+        self.navigationItem.title = character?.name
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,6 +100,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         sectionHeaderCell.labelSectionHeader.text = labelSectionTitle
         
         return sectionHeaderCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
     func addCharacterToFavourite(characterId : Int){

@@ -110,23 +110,13 @@
         <!--Detail View Controller-->
         <scene sceneID="OxN-09-tgs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ep8-j3-xh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="h7N-JZ-Jkl" customClass="DetailViewController" customModule="marvelapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hZW-Mo-bTe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dskfljsdklfjsdklf" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqV-5G-ay2">
-                                <rect key="frame" x="20" y="118" width="219" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="euE-pq-ckf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IAX-wi-Wf7">
-                                <rect key="frame" x="0.0" y="176" width="375" height="636"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionHeaderCell" id="BuL-GG-aJM" userLabel="sectionHeaderCell" customClass="SectionHeaderCell" customModule="marvelapp" customModuleProvider="target">
@@ -160,6 +150,7 @@
                                                 <constraint firstItem="EOB-38-g3P" firstAttribute="leading" secondItem="MQa-f4-Pfe" secondAttribute="trailing" constant="10" id="dPa-AR-1n6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="imageSectionHeader" destination="MQa-f4-Pfe" id="eg3-Ap-1CI"/>
                                             <outlet property="labelSectionHeader" destination="EOB-38-g3P" id="C3R-kW-mPU"/>
@@ -187,27 +178,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KqV-5G-ay2" firstAttribute="top" secondItem="24R-TP-JHb" secondAttribute="top" constant="30" id="HIB-xv-k5c"/>
+                            <constraint firstItem="IAX-wi-Wf7" firstAttribute="top" secondItem="24R-TP-JHb" secondAttribute="top" id="1LD-es-gTR"/>
                             <constraint firstAttribute="bottom" secondItem="IAX-wi-Wf7" secondAttribute="bottom" id="Ncz-hF-NYc"/>
                             <constraint firstItem="IAX-wi-Wf7" firstAttribute="leading" secondItem="24R-TP-JHb" secondAttribute="leading" id="S8D-Ra-yfN"/>
                             <constraint firstItem="IAX-wi-Wf7" firstAttribute="trailing" secondItem="24R-TP-JHb" secondAttribute="trailing" id="Wu7-xB-p16"/>
-                            <constraint firstItem="KqV-5G-ay2" firstAttribute="leading" secondItem="24R-TP-JHb" secondAttribute="leading" constant="20" id="bVn-hN-VAp"/>
-                            <constraint firstItem="IAX-wi-Wf7" firstAttribute="top" secondItem="KqV-5G-ay2" secondAttribute="bottom" constant="8" symbolic="YES" id="npB-gX-qmp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="24R-TP-JHb"/>
                     </view>
                     <connections>
-                        <outlet property="characterNameLabel" destination="KqV-5G-ay2" id="2Mj-GD-K64"/>
                         <outlet property="detailTableView" destination="IAX-wi-Wf7" id="fC2-6s-PIs"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ep8-j3-xh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="556" y="368.7192118226601"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jY5-dt-zcj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FUP-PT-AHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B96-ru-p9R" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8n9-Ie-Lmv">
@@ -219,6 +207,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="YtV-iE-dUy"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FUP-PT-AHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1234.4000000000001" y="367.46626686656674"/>
         </scene>
