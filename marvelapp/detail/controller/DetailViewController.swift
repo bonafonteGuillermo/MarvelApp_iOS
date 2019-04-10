@@ -23,18 +23,22 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         addCharacterToFavourite(characterId: (character?.id!)!)
     }*/
     
-    @IBOutlet weak var characterNameLabel: UILabel!
     @IBOutlet weak var detailTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
         
         detailTableView.delegate = self
         detailTableView.dataSource = self
         
         self.navigationItem.title = character?.name
+    }
+    
+    @objc func addTapped(){
+        addCharacterToFavourite(characterId: (character?.id!)!)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

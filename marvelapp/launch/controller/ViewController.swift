@@ -19,9 +19,11 @@ class ViewController:
     var repository = Repository()
     
     @IBOutlet weak var charactersCollectionView: UICollectionView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "Marvel APP"
         
         charactersCollectionView.dataSource = self
         charactersCollectionView.delegate = self
@@ -83,5 +85,7 @@ class ViewController:
         
         return cell
     }
+    
+    
     
 }
