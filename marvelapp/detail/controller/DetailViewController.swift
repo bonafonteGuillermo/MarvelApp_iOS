@@ -17,19 +17,27 @@ enum SectionType: Int, CaseIterable {
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     var character : Results?
+    let usersDefaultManager = UsersDefaultManager()
     
-    /*@IBOutlet weak var labelCharacterName: UITextView!
-    @IBAction func bntAddFavourite(_ sender: Any) {
-        addCharacterToFavourite(characterId: (character?.id!)!)
-    }*/
-    
+
     @IBOutlet weak var detailTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+        
+        var navControllerButtonItemText = "Add"
+        if(usersDefaultManager.isCharacterFavourite(characterId: (self.character?.id)!)){
+            navControllerButtonItemText = "Remove"
+        }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: navControllerButtonItemText,
+            style: .plain,
+            target: self,
+            action: #selector(addTapped(sender:))
+        )
         
         detailTableView.delegate = self
         detailTableView.dataSource = self
@@ -37,8 +45,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationItem.title = character?.name
     }
     
-    @objc func addTapped(){
-        addCharacterToFavourite(characterId: (character?.id!)!)
+    @objc func addTapped(sender : UIBarButtonItem){
+        if(sender.title == "Add"){
+            usersDefaultManager.addCharacterToFavourite(character: (character)!)
+            sender.title = "Remove"
+        }else{
+            usersDefaultManager.removeCharacterFromFavourite(character: (character)!)
+            sender.title = "Add"
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,13 +103,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         switch section {
         case SectionType.TYPE_INFO.rawValue:
-            imageResourceNamed = "play"
+            imageResourceNamed = "info-icon"
             labelSectionTitle = "MORE INFO"
         case SectionType.TYPE_COMIC.rawValue:
-            imageResourceNamed = "play"
+            imageResourceNamed = "comics-icon"
             labelSectionTitle = "COMICS"
         case SectionType.TYPE_SERIES.rawValue:
-            imageResourceNamed = "play"
+            imageResourceNamed = "film-icon"
             labelSectionTitle = "SERIES"
         default:
             break
@@ -110,17 +125,5 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return 50
     }
     
-    func addCharacterToFavourite(characterId : Int){
-        
-        let encoder = JSONEncoder()
-        guard let jsonData = try? encoder.encode(character) else{ return }
-        let json = String(data: jsonData, encoding: String.Encoding.utf8)
-        
-        var myArray = [String]()
-        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [String] {
-            myArray = temp
-        }
-        myArray.append(json!)
-        UserDefaults.standard.set(myArray, forKey: "myArray")
-    }
+    
 }

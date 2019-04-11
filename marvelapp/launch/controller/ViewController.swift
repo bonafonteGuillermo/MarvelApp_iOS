@@ -16,7 +16,8 @@ class ViewController:
 {
     
     var characters = [Results?]()
-    var repository = Repository()
+    let repository = RemoteRepository()
+    let usersDefaultManager = UsersDefaultManager()
     
     @IBOutlet weak var charactersCollectionView: UICollectionView!
     
@@ -69,23 +70,8 @@ class ViewController:
         let imageExtension : String  = (self.characters[indexPath.row]?.thumbnail?.thumbnailExtension)!
         let imageFullPath = imageUrl+"."+imageExtension
         
-        var myArray = [String]()
-        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [String] {
-            myArray = temp
-        }
-        
-        var charactersArray = [Results]()
-        for stringCharacter in myArray{
-            let jsonData = stringCharacter.data(using: String.Encoding.utf8)!
-            let decoder = JSONDecoder()
-            guard let character =
-                try? decoder.decode(Results.self, from: jsonData)
-                else { break }
-            charactersArray.append(character)
-        }
-        
-        if charactersArray.contains(where: { $0.id == (self.characters[indexPath.row]?.id)! }) {
-            cell.characterLikeImageView.image = UIImage(named: "like")
+        if(usersDefaultManager.isCharacterFavourite(characterId: (self.characters[indexPath.row]?.id)!)){
+            cell.characterLikeImageView.image = UIImage(named: "star")
         }else{
             cell.characterLikeImageView.image = nil
         }

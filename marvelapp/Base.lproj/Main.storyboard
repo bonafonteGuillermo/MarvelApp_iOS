@@ -136,6 +136,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.15294117647058825" green="0.21176470588235294" blue="0.27843137254901962" alpha="0.43236301369863012" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="MQa-f4-Pfe" firstAttribute="top" secondItem="g1y-lW-EMQ" secondAttribute="top" constant="10" id="5Mu-5d-I3R"/>
                                                 <constraint firstItem="MQa-f4-Pfe" firstAttribute="leading" secondItem="g1y-lW-EMQ" secondAttribute="leading" constant="15" id="Ami-6u-Rae"/>
@@ -186,11 +187,11 @@
             </objects>
             <point key="canvasLocation" x="1498.4000000000001" y="368.7192118226601"/>
         </scene>
-        <!--Item-->
+        <!--Browse-->
         <scene sceneID="jY5-dt-zcj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B96-ru-p9R" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="O8e-hb-9E3"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="literature" id="O8e-hb-9E3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8n9-Ie-Lmv">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -205,7 +206,7 @@
             </objects>
             <point key="canvasLocation" x="-292" y="367.24137931034483"/>
         </scene>
-        <!--Item-->
+        <!--Favourites-->
         <scene sceneID="gIt-xF-Ce8">
             <objects>
                 <viewController id="fp2-VI-mIS" sceneMemberID="viewController">
@@ -215,7 +216,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="CPR-Le-jSE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="nro-s1-1OS"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="favourites" id="nro-s1-1OS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUX-2D-VJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,6 +228,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1M7-zX-DUs" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nla-cK-uGt">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -241,6 +243,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favourites" width="30" height="30"/>
         <image name="like" width="32" height="32"/>
+        <image name="literature" width="30" height="30"/>
     </resources>
 </document>
