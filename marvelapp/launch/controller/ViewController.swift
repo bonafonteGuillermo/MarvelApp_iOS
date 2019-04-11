@@ -19,6 +19,10 @@ class ViewController:
     let repository = RemoteRepository()
     let usersDefaultManager = UsersDefaultManager()
     
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
+    var screenHeight: CGFloat!
+    
     @IBOutlet weak var charactersCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -26,6 +30,16 @@ class ViewController:
         
         self.navigationItem.title = "Marvel APP"
         
+        screenSize = UIScreen.main.bounds
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: screenWidth/2, height: screenWidth/2)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        charactersCollectionView.collectionViewLayout = layout
         charactersCollectionView.dataSource = self
         charactersCollectionView.delegate = self
         
@@ -81,6 +95,11 @@ class ViewController:
         
         return cell
     }
+    
+    /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        return CGSize(width: 200.0, height: 200.0)
+    }*/
     
     
     
