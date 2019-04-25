@@ -78,4 +78,24 @@ class UsersDefaultManager {
         myArray = newArray
         UserDefaults.standard.set(myArray, forKey: "myArray")
     }
+    
+    func getFavourites() -> [Results]{
+    
+        var myArray = [String]()
+        if let temp = UserDefaults.standard.object(forKey: "myArray") as? [String] {
+            myArray = temp
+        }
+        
+        var charactersArray = [Results]()
+        for stringCharacter in myArray{
+            let jsonData = stringCharacter.data(using: String.Encoding.utf8)!
+            let decoder = JSONDecoder()
+            guard let character =
+                try? decoder.decode(Results.self, from: jsonData)
+                else { break }
+            charactersArray.append(character)
+        }
+        
+        return charactersArray
+    }
 }
