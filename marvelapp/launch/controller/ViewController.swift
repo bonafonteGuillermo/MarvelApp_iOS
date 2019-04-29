@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ViewController:
     UIViewController,
@@ -58,11 +59,13 @@ class ViewController:
     }
     
     func getCharactersData(){
+        SVProgressHUD.show(withStatus: "Loading...")
         self.repository.fetchCharacteres() { (results) in
             for result in results! {
                 self.characters = results!
                 DispatchQueue.main.async {
                     self.charactersCollectionView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
             }
         }
@@ -84,11 +87,15 @@ class ViewController:
         let imageExtension : String  = (self.characters[indexPath.row]?.thumbnail?.thumbnailExtension)!
         let imageFullPath = imageUrl+"."+imageExtension
         
+        
         if(usersDefaultManager.isCharacterFavourite(characterId: (self.characters[indexPath.row]?.id)!)){
             cell.characterLikeImageView.image = UIImage(named: "star")
         }else{
             cell.characterLikeImageView.image = nil
         }
+        
+        cell.characterLikeImageView.contentMode = .scaleAspectFill
+        cell.characterLikeImageView.clipsToBounds = true
         
         cell.characterImageView.downloaded(from: imageFullPath)
         cell.characterNameLabel.text = self.characters[indexPath.row]?.name

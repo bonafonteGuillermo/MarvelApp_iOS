@@ -43,6 +43,7 @@ class FavouritesViewController:
         let imageExtension : String  = (self.favourites[indexPath.row].thumbnail?.thumbnailExtension)!
         let imageFullPath = imageUrl+"."+imageExtension
         
+        cell.favouriteImage.setRounded()
         cell.favouriteImage.downloaded(from: imageFullPath)
         cell.favouriteLabel.text = self.favourites[indexPath.row].name
         
