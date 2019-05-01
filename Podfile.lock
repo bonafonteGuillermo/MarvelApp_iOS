@@ -1,16 +1,65 @@
 PODS:
+  - MaterialComponents/AnimationTiming (83.0.1)
+  - MaterialComponents/Buttons (83.0.1):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Ink (83.0.1):
+    - MaterialComponents/private/Math
+  - MaterialComponents/OverlayWindow (83.0.1):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Application (83.0.1)
+  - MaterialComponents/private/KeyboardWatcher (83.0.1):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (83.0.1)
+  - MaterialComponents/private/Overlay (83.0.1)
+  - MaterialComponents/Ripple (83.0.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (83.0.1)
+  - MaterialComponents/ShadowLayer (83.0.1):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (83.0.1):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Snackbar (83.0.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Overlay
+    - MaterialComponents/Typography
+  - MaterialComponents/Typography (83.0.1):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - MaterialComponents/Snackbar
   - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  MaterialComponents: 2363f5dab79a96d3958e6aaf49ec116e102d23dc
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: dab6dd2ef83db3ab911dd429df7cbbc41a380e62
+PODFILE CHECKSUM: 5a945fe85cd28543c5b4b75c8d8aca61537014be
 
 COCOAPODS: 1.6.1

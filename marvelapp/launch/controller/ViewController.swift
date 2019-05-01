@@ -29,8 +29,6 @@ class ViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Marvel APP"
-        
         screenSize = UIScreen.main.bounds
         screenWidth = screenSize.width
         screenHeight = screenSize.height
@@ -61,12 +59,10 @@ class ViewController:
     func getCharactersData(){
         SVProgressHUD.show(withStatus: "Loading...")
         self.repository.fetchCharacteres() { (results) in
-            for result in results! {
-                self.characters = results!
-                DispatchQueue.main.async {
-                    self.charactersCollectionView.reloadData()
-                    SVProgressHUD.dismiss()
-                }
+            self.characters = results!
+            DispatchQueue.main.async {
+                self.charactersCollectionView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }

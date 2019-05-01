@@ -6,6 +6,7 @@ target 'marvelapp' do
   use_frameworks!
 
   pod 'SVProgressHUD'
+  pod 'MaterialComponents/Snackbar'
 
   target 'marvelappTests' do
     inherit! :search_paths

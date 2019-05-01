@@ -20,7 +20,6 @@ class FavouritesViewController:
     
     @IBOutlet weak var favouritesCollectionView: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -29,6 +28,11 @@ class FavouritesViewController:
         favouritesCollectionView.delegate = self
         
         self.favourites = self.usersDefaultManager.getFavourites()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.favourites = self.usersDefaultManager.getFavourites()
+        self.favouritesCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialSnackbar
 
 enum SectionType: Int, CaseIterable {
     case TYPE_INFO = 0
@@ -49,11 +50,32 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         if(sender.title == "Add"){
             usersDefaultManager.addCharacterToFavourite(character: (character)!)
             sender.title = "Remove"
+            showAddedSnackbar()
         }else{
-            usersDefaultManager.removeCharacterFromFavourite(character: (character)!)
-            sender.title = "Add"
+            showConfirmationActionSheet(sender : sender)
         }
+    }
+    
+    func showAddedSnackbar(){
+        let message = MDCSnackbarMessage()
+        message.text = (self.character?.name)!+" added to favourites."
+        MDCSnackbarManager.show(message)
+    }
+    
+    func showConfirmationActionSheet(sender : UIBarButtonItem){
+        let alertController = UIAlertController(title: character?.name, message: "Do you really want to remove it from favorites?", preferredStyle: .actionSheet)
         
+        let actionAccept = UIAlertAction(title: "Accept", style: .default, handler:
+        {(action) in
+            self.usersDefaultManager.removeCharacterFromFavourite(character: (self.character)!)
+            sender.title = "Add"
+        })
+        alertController.addAction(actionAccept)
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler:nil)
+        alertController.addAction(actionCancel)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
