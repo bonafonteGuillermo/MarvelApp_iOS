@@ -29,16 +29,6 @@ class ViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        screenSize = UIScreen.main.bounds
-        screenWidth = screenSize.width
-        screenHeight = screenSize.height
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: screenWidth/2, height: screenWidth/2)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        charactersCollectionView.collectionViewLayout = layout
         charactersCollectionView.dataSource = self
         charactersCollectionView.delegate = self
         
@@ -90,11 +80,15 @@ class ViewController:
             cell.characterLikeImageView.image = nil
         }
         
-        cell.characterLikeImageView.contentMode = .scaleAspectFill
-        cell.characterLikeImageView.clipsToBounds = true
+        cell.characterImageView.contentMode = .scaleAspectFill
+        cell.characterImageView.clipsToBounds = false
+        
+        
         
         cell.characterImageView.downloaded(from: imageFullPath)
         cell.characterNameLabel.text = self.characters[indexPath.row]?.name
+        
+        cell.layer.cornerRadius = 10
         
         return cell
     }
@@ -103,4 +97,21 @@ class ViewController:
     {
         return CGSize(width: 200.0, height: 200.0)
     }*/
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        let cellSize = CGSize(width: (collectionView.bounds.width - (3 * 15))/2, height: (collectionView.bounds.width - (3 * 15))/2)
+        return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
+    {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
+    {
+        let sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        return sectionInset
+    }
 }
