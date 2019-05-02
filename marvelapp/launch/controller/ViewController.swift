@@ -83,8 +83,7 @@ class ViewController:
         cell.characterImageView.contentMode = .scaleAspectFill
         cell.characterImageView.clipsToBounds = false
         
-        
-        
+    
         cell.characterImageView.downloaded(from: imageFullPath)
         cell.characterNameLabel.text = self.characters[indexPath.row]?.name
         
