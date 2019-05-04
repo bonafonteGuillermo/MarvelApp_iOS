@@ -37,7 +37,7 @@ class RemoteRepository {
                     completionHandler(nil)
                     return
             }
-            completionHandler(charactersResponse.data?.characters)
+            completionHandler(charactersResponse.data?.results)
             }.resume()
     }
 }
