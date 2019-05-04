@@ -16,7 +16,7 @@ class FavouritesViewController:
 {
     
     let usersDefaultManager = UsersDefaultManager()
-    var favourites = [Results]()
+    var favourites = [Character]()
     
     @IBOutlet weak var favouritesCollectionView: UICollectionView!
     

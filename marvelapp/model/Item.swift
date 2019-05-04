@@ -1,6 +1,6 @@
 import Foundation
 
-struct Items : Codable {
+struct Item : Codable {
 	let resourceURI : String?
 	let name : String?
 }

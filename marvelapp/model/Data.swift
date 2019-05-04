@@ -5,5 +5,5 @@ struct Data : Codable {
 	let limit : Int?
 	let total : Int?
 	let count : Int?
-	let results : [Results]?
+	let results : [Character]?
 }

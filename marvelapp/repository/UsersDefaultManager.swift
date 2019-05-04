@@ -15,12 +15,12 @@ class UsersDefaultManager {
             myArray = temp
         }
         
-        var charactersArray = [Results]()
+        var charactersArray = [Character]()
         for stringCharacter in myArray{
             let jsonData = stringCharacter.data(using: String.Encoding.utf8)!
             let decoder = JSONDecoder()
             guard let character =
-                try? decoder.decode(Results.self, from: jsonData)
+                try? decoder.decode(Character.self, from: jsonData)
                 else { break }
             charactersArray.append(character)
         }
@@ -32,7 +32,7 @@ class UsersDefaultManager {
         }
     }
     
-    func addCharacterToFavourite(character : Results){
+    func addCharacterToFavourite(character : Character){
         
         let encoder = JSONEncoder()
         guard let jsonData = try? encoder.encode(character) else{ return }
@@ -46,19 +46,19 @@ class UsersDefaultManager {
         UserDefaults.standard.set(myArray, forKey: "myArray")
     }
     
-    func removeCharacterFromFavourite(character : Results){
+    func removeCharacterFromFavourite(character : Character){
         
         var myArray = [String]()
         if let temp = UserDefaults.standard.object(forKey: "myArray") as? [String] {
             myArray = temp
         }
         
-        var charactersArray = [Results]()
+        var charactersArray = [Character]()
         for stringCharacter in myArray{
             let jsonData = stringCharacter.data(using: String.Encoding.utf8)!
             let decoder = JSONDecoder()
             guard let character =
-                try? decoder.decode(Results.self, from: jsonData)
+                try? decoder.decode(Character.self, from: jsonData)
                 else { break }
             charactersArray.append(character)
         }
@@ -79,19 +79,19 @@ class UsersDefaultManager {
         UserDefaults.standard.set(myArray, forKey: "myArray")
     }
     
-    func getFavourites() -> [Results]{
+    func getFavourites() -> [Character]{
     
         var myArray = [String]()
         if let temp = UserDefaults.standard.object(forKey: "myArray") as? [String] {
             myArray = temp
         }
         
-        var charactersArray = [Results]()
+        var charactersArray = [Character]()
         for stringCharacter in myArray{
             let jsonData = stringCharacter.data(using: String.Encoding.utf8)!
             let decoder = JSONDecoder()
             guard let character =
-                try? decoder.decode(Results.self, from: jsonData)
+                try? decoder.decode(Character.self, from: jsonData)
                 else { break }
             charactersArray.append(character)
         }

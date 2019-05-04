@@ -1,8 +1,8 @@
 import Foundation
 
-struct Series : Codable {
+struct Serie : Codable {
 	let available : Int?
 	let collectionURI : String?
-	let items : [Items]?
+	let items : [Item]?
 	let returned : Int?
 }

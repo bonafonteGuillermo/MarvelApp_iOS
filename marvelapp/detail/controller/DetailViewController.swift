@@ -17,7 +17,7 @@ enum SectionType: Int, CaseIterable {
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    var character : Results?
+    var character : Character?
     let usersDefaultManager = UsersDefaultManager()
     
 

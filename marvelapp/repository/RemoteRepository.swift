@@ -22,7 +22,7 @@ class RemoteRepository {
         "hash": hash
     ]
     
-    func fetchCharacteres(completionHandler: @escaping ([Results]?) -> Void){
+    func fetchCharacteres(completionHandler: @escaping ([Character]?) -> Void){
         
         let baseUrl = URL(string : "https://gateway.marvel.com:443/v1/public/characters?")!
         
@@ -37,7 +37,7 @@ class RemoteRepository {
                     completionHandler(nil)
                     return
             }
-            completionHandler(charactersResponse.data?.results)
+            completionHandler(charactersResponse.data?.characters)
             }.resume()
     }
 }

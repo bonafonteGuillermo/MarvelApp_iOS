@@ -1,9 +1,8 @@
 import Foundation
 
-struct Events : Codable {
+struct Storie : Codable {
 	let available : Int?
 	let collectionURI : String?
-	let items : [Items]?
+	let items : [Item]?
 	let returned : Int?
-    
 }

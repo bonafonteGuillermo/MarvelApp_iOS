@@ -16,5 +16,4 @@ class CharacterNameUILabel : UILabel{
         self.font = UIFont.boldSystemFont(ofSize: 18.0)
         super.drawText(in: rect.inset(by : inset))
     }
-
 }
