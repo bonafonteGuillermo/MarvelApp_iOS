@@ -17,29 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_background_image" translatesAutoresizingMaskIntoConstraints="NO" id="JdX-Md-CwQ">
-                                <rect key="frame" x="107" y="298" width="160" height="73"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="1AR-Cq-XJf"/>
-                                    <constraint firstAttribute="width" constant="160" id="F6P-5J-xPA"/>
-                                </constraints>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MarvelApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0s-ID-kKh">
+                                <rect key="frame" x="71" y="267" width="262" height="104"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92878937721252441" green="0.11362989991903305" blue="0.13982325792312622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.0" blue="0.031372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JdX-Md-CwQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="278.19999999999999" id="0nT-Iy-KQh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JdX-Md-CwQ" secondAttribute="trailing" constant="107.97" id="0z3-Zs-3nv"/>
-                            <constraint firstItem="JdX-Md-CwQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="107.03" id="kwc-Uk-GQQ"/>
+                            <constraint firstItem="m0s-ID-kKh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fIJ-IK-eAV"/>
+                            <constraint firstItem="m0s-ID-kKh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jHF-NT-xTU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="splash_background_image" width="290" height="118"/>
-    </resources>
 </document>
